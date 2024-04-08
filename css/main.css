@@ -1,0 +1,19 @@
+body {
+  width: 100%;
+}
+
+#container { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+canvas {
+  border: 1px solid black;
+  margin-right: 10px;
+  display: block;
+  flex-basis: calc(66.666% - 10px);
+}
+
+#console { 
+  flex-basis: calc(33.333% - 10px);
+}
