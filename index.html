@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas Example</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <script src="javascript/main.js" type="module" defer></script>
     <script src="javascript/utility.js" type="module" defer></script>
   </head>
   <body>
     <div id="container">
-      <canvas id="main"></canvas>
-      <div id="console"></div>
+      <div class="display">
+        <canvas id="main" class="left-side"></canvas>
+      </div>
+      
+      <div class="info">
+        <div id="console">Mouse position X: 0, Mouse position Y: 0</div>
+        <div id="controls">
+          <button type="button" id="draw" class="pure-button pure-button-primary" >Draw</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

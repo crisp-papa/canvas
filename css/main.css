@@ -1,5 +1,6 @@
 body {
   width: 100%;
+  height: 100vh;
 }
 
 #container { 
@@ -7,13 +8,32 @@ body {
   flex-wrap: wrap;
 }
 
-canvas {
+.display {
   border: 1px solid black;
-  margin-right: 10px;
+  margin: 10px;
   display: block;
-  flex-basis: calc(66.666% - 10px);
+  flex-basis: calc(66.666% - 20px);
+}
+
+canvas {
+  width: 100%;
+}
+
+.info { 
+  border: 1px solid black;
+  margin: 10px 0;
+  flex-basis: calc(33.333% - 20px);
 }
 
 #console { 
-  flex-basis: calc(33.333% - 10px);
+  height: calc(75%);
+}
+
+#controls {
+  border-top: 1px solid black;
+  height: calc(25%);
+}
+
+#console, #controls {
+  padding: 10px;
 }
