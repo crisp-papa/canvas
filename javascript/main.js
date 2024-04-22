@@ -3,16 +3,8 @@ import { getRandomRGB } from './utility.js';
 const canvas = document.getElementById('main');
 const context = canvas.getContext('2d');
 const consoleDisplay = document.getElementById('console');
+const instructions = document.getElementById('information');
 let drawing = false;
-
-function handleMouseMovement(event) {
-  if (drawing) { 
-    context.lineTo(event.offsetX, event.offsetY);
-    context.stroke();
-  }
-
-  consoleDisplay.innerText = `Mouse position X: ${event.offsetX}, Mouse position Y: ${event.offsetY}`;
-}
 
 function handleMouseDown(event) { 
   if (event.button == 0) { 
@@ -26,15 +18,33 @@ function handleMouseDown(event) {
   }
 }
 
+function handleMouseMovement(event) {
+  if (drawing) {
+    context.lineTo(event.offsetX, event.offsetY);
+    context.stroke();
+  }
+
+  consoleDisplay.innerText = `Mouse position X: ${event.offsetX}, Mouse position Y: ${event.offsetY}`;
+}
+
 function handleMouseUp(event) {
   drawing = false;
 }
 
-function initializeCanvas() { 
-  const display = window.getComputedStyle(document.querySelector('.display'));
-  canvas.setAttribute('width', display.getPropertyValue('width'));
-  canvas.setAttribute('height', window.innerHeight - 16);
+function initialize() {
+  if (canvas.getContext) {
+    // Resize the canvas based on the size of the body element and the default html margins
+    initializeCanvas();
 
+    // Draw button event listener
+    document.getElementById('draw').addEventListener('click', initializeDrawButton);
+
+  } else {
+    // canvas-unsupported code here
+  }
+}
+
+function initializeDrawButton() {
   // Event listeners for mouse movement and clicks on the canvas
   canvas.addEventListener('mousemove', handleMouseMovement);
   canvas.addEventListener('mousedown', handleMouseDown);
@@ -43,15 +53,14 @@ function initializeCanvas() {
   canvas.addEventListener('contextmenu', (event) => {
       event.preventDefault(); // Prevent the default context menu from appearing
   });
+
+  instructions.innerText = 'Left click to draw on the canvas.\nRight click to clear the canvas.';
 }
 
-function initialize() {
-  if (canvas.getContext) {
-    // Resize the canvas based on the size of the body element and the default html margins
-    initializeCanvas();
-  } else {
-    // canvas-unsupported code here
-  }
+function initializeCanvas() { 
+  const display = window.getComputedStyle(document.querySelector('.display'));
+  canvas.setAttribute('width', display.getPropertyValue('width'));
+  canvas.setAttribute('height', window.innerHeight - 24);
 }
 
 window.addEventListener('load', initialize);

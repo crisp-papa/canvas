@@ -22,11 +22,17 @@ canvas {
 .info { 
   border: 1px solid black;
   margin: 10px 0;
-  flex-basis: calc(33.333% - 20px);
+  flex-basis: calc(33.333% - 14px);
 }
 
 #console { 
-  height: calc(75%);
+  height: calc(50%);
+}
+
+#instructions { 
+  border-top: 1px solid black;
+  height: calc(25%);
+  padding: 10px;
 }
 
 #controls {
