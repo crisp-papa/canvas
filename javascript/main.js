@@ -55,6 +55,28 @@ function initializeDrawButton() {
   });
 
   instructions.innerText = 'Left click to draw on the canvas.\nRight click to clear the canvas.';
+
+  hideButtons();
+
+  // Display functions related to drawing
+  const functions = document.getElementById('draw-functions')
+  functions.classList.toggle('hidden');
+  functions.querySelector('#line-color').addEventListener('input', (event) => {
+    context.strokeStyle = event.target.value;
+  });
+
+  functions.querySelector('#line-width').addEventListener('input', (event) => {
+    context.lineWidth = event.target.value;
+  });
+
+  functions.querySelector('#background-color').addEventListener('input', (event) => { 
+    context.fillStyle = event.target.value;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  });
+}
+
+function hideButtons() {
+  document.getElementById('draw').classList.toggle('hidden');
 }
 
 function initializeCanvas() { 
