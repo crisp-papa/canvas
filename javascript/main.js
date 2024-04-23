@@ -73,6 +73,7 @@ function initializeDrawButton() {
     context.fillStyle = event.target.value;
     context.fillRect(0, 0, canvas.width, canvas.height);
   });
+  context.lineCap = 'round';
 }
 
 function hideButtons() {
