@@ -1,2 +1,2 @@
-### Run the server
-`live-server --port=8080 --entry-file=index.html`
+### Run the server for development
+`live-server --port=8080 --entry-file=app/index.html`
