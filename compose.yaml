@@ -1,0 +1,28 @@
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 9000:80
+    volumes:
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /var/www/html 
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: game
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the SQL script
+volumes:
+  db-data:
