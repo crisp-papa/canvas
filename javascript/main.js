@@ -84,6 +84,15 @@ function initializeCanvas() {
   const display = window.getComputedStyle(document.querySelector('.display'));
   canvas.setAttribute('width', display.getPropertyValue('width'));
   canvas.setAttribute('height', window.innerHeight - 24);
+
+  context.fillStyle = "#0f0f0f"; 
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  let avatar = new Image();
+  avatar.src = 'assets/oryx/Avatar.png';
+  avatar.onload = () => {
+    context.drawImage(avatar, 16, 0, 16, 24, 0, 0, 16, 24);
+  }
 }
 
 window.addEventListener('load', initialize);
