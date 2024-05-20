@@ -41,28 +41,6 @@ canvas {
   margin: 0 0 15px 0;
 }
 
-#controls {
-  border-top: 1px solid black;
-  align-items: stretch;
-}
-
-#draw {
-  width: 100%;
-}
-
-#controls, #draw {
-  height: 100%;
-}
-
-#console, #controls {
+#console{
   padding: 10px;
-}
-
-#draw-functions { 
-  display: flex;
-  flex-flow: column wrap;
-}
-
-#draw-functions div { 
-  margin: 0 0 2% 0;
 }
