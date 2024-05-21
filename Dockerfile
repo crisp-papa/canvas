@@ -36,7 +36,6 @@ COPY . .
 # Expose the port that the application listens on.
 EXPOSE 8080
 
-
-WORKDIR ./app
+WORKDIR /usr/src/app
 # Run the application.
 CMD [ "live-server", "--port=8080", "--entry-file=index.html"]
