@@ -1,17 +1,26 @@
-import { getRandomRGB, getAvatarSourceImageValues } from './utility.js';
+import { drawPlayerImage } from './draw.js';
+import { Player } from './player.js';
 
 const canvas = document.getElementById('main');
 const context = canvas.getContext('2d');
 const output = document.getElementById('output');
+const player = new Player();
+let xPosMouse = 0, yPosMouse = 0;
 
 function handleMouseDown(event) { 
   if (event.button == 0) { 
     // Left click (move / attack / pick up item / use door / open chest / etc)
+    player.updatePlayerOrientation(xPosMouse);
+    player.x = xPosMouse;
+    player.y = yPosMouse;
+    drawPlayerImage(player, context);
   }
 }
 
 function handleMouseMovement(event) {
   output.innerText = `Mouse position X: ${event.offsetX}, Mouse position Y: ${event.offsetY}`;
+  xPosMouse = event.offsetX;
+  yPosMouse = event.offsetY;
 }
 
 function handleMouseUp(event) {
@@ -39,13 +48,9 @@ function initializeCanvas() {
   context.fillStyle = "#212121"; 
   context.fillRect(0, 0, canvas.width, canvas.height);
   
-  let avatar = new Image();
-  avatar.src = 'assets/oryx/Avatar.png';
-  avatar.onload = () => {
-    const [sx, sy, sw, sh] = getAvatarSourceImageValues('right');
-    const [dx, dy, dw, dh] = [0, 0, 16, 24];
-    // image, sx, sy, sw, sh, dx, dy, dw, dh
-    context.drawImage(avatar, sx, sy, sw, sh, dx, dy, dw, dh);
+  let image = player.image;
+  image.onload = () => {
+    drawPlayerImage(image, context);
   }
 
   // Key handler
