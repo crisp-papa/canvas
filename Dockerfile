@@ -13,8 +13,7 @@ FROM node:${NODE_VERSION}-alpine
 # Use production node environment by default.
 ENV NODE_ENV production
 
-
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.npm to speed up subsequent builds.
@@ -37,5 +36,7 @@ COPY . .
 # Expose the port that the application listens on.
 EXPOSE 8080
 
+
+WORKDIR ./app
 # Run the application.
-CMD [ "live-server", "--port=8080", "--entry-file=app/index.html"]
+CMD [ "live-server", "--port=8080", "--entry-file=index.html"]
