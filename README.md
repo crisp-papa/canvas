@@ -1,2 +1,8 @@
-### Run the server for development
-`live-server --port=8080 --entry-file=app/index.html`
+### Development
+To run the container for development simply run this command:
+
+```docker compose up --build```
+
+To run the container for development with hot reloading:
+
+```docker compose up --watch```
