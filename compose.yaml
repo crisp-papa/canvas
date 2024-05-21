@@ -10,4 +10,4 @@ services:
       watch:
         - action: sync
           path: .
-          target: /usr/src/app
+          target: /usr/src

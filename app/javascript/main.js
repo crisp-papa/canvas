@@ -34,7 +34,7 @@ function initializeCanvas() {
 
   context.fillStyle = "#0f0f0f"; 
   context.fillRect(0, 0, canvas.width, canvas.height);
-
+  
   let avatar = new Image();
   avatar.src = 'assets/oryx/Avatar.png';
   avatar.onload = () => {
