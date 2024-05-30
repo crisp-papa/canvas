@@ -6,15 +6,11 @@ const canvas = document.getElementById('main');
 const context = canvas.getContext('2d');
 const output = document.getElementById('output');
 const player = new Player();
-let xPosMouse = 0, yPosMouse = 0;
 let keysPressed = {};
 
 function handleMouseDown(event) { 
   if (event.button == 0) { 
     // Left click (move / attack / pick up item / use door / open chest / etc)
-    player.updatePlayerOrientation(xPosMouse);
-    // player.x = xPosMouse;
-    // player.y = yPosMouse;
   }
 }
 
@@ -49,6 +45,7 @@ function initializeCanvas() {
 
   clearCanvas();
 
+  // Change this to a random position or from player files
   player.x = 100;
   player.y = 100;
 
@@ -67,22 +64,24 @@ function initializeCanvas() {
 }
 
 function respondToKeypress() { 
-  if (keysPressed['KeyW']) { 
-    player.y -= 5;
-  }
-
   if (keysPressed['KeyA']) { 
     player.x -= 5;
     player.orientation = 'left';
   }
 
-  if (keysPressed['KeyS']) { 
-    player.y += 5;
-  }
-
   if (keysPressed['KeyD']) { 
     player.x += 5;
     player.orientation = 'right';
+  }
+
+  if (keysPressed['KeyW']) {
+    player.y -= 5;
+    player.up = true;
+  }
+
+  if (keysPressed['KeyS']) {
+    player.y += 5;
+    player.up = false;
   }
 
   console.log(player.x, player.y);

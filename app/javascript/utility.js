@@ -16,7 +16,10 @@ export function getRandomRGB() {
 }
 
 
-export function getAvatarSourceImageValues(key = 'left') {
+export function getAvatarSourceImageValues(key = 'left', up = false) {
+  if (up) { 
+    key += 'Up';
+  }
 
   const map = new Map([
     // sx, sy, sw, sh
@@ -27,24 +30,26 @@ export function getAvatarSourceImageValues(key = 'left') {
     ['leftUnknown', [96, 0, TILE_WIDTH, TILE_HEIGHT]], // Honestly not sure what this sprite is supposed to represent
     ['leftMeleeLarge', [128, 0, TILE_WIDTH, TILE_HEIGHT]],
     ['leftRanged', [160, 0, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftUp', [192, 0, TILE_WIDTH, TILE_HEIGHT]],
     // Row 2
-    ['leftCrouched', [16, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
-    ['leftMeleeCrouched', [32, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
-    ['leftUnknownCrouched', [48, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
-    ['leftMeleeLargeCrouched', [64, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
-    ['leftRangedCrouched', [80, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftCrouched', [32, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftMeleeCrouched', [64, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftUnknownCrouched', [96, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftMeleeLargeCrouched', [128, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
+    ['leftRangedCrouched', [160, TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT]],
     // Row 3
     ['right', [32, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightMelee', [32, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightUnknown', [48, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]], // Same
-    ['rightMeleeLarge', [64, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightRanged', [80, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightMelee', [64, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightUnknown', [96, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]], // Same
+    ['rightMeleeLarge', [128, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightRanged', [160, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightUp', [192, TILE_HEIGHT * 2, TILE_WIDTH, TILE_HEIGHT]],
     // Row 4
-    ['rightCrouched', [16, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightMeleeCrouched', [32, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightUnknownCrouched', [48, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightMeleeLargeCrouched', [64, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
-    ['rightRangedCrouched', [80, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightCrouched', [32, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightMeleeCrouched', [64, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightUnknownCrouched', [96, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightMeleeLargeCrouched', [128, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
+    ['rightRangedCrouched', [160, TILE_HEIGHT * 3, TILE_WIDTH, TILE_HEIGHT]],
   ]);
 
   return map.get(key);

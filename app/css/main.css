@@ -44,3 +44,7 @@ canvas {
 #console{
   padding: 10px;
 }
+
+*::selection {
+  background-color: transparent;
+}
